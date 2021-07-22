@@ -11,6 +11,3 @@ app.get('*', (req, res) => {
 app.listen('3000', ()=> {
     console.log('Сервер был запущен на порту 3000...');
 })
-
-
-console.log(form)

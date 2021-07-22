@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RESTAPI</title>
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>RESTAPI</title>
+    <style>
+        [v-clock] {
+            display: none;
+
+        }
+    </style>
 </head>
 <body>
 
-<div class="container pt-3" id="app">
+<div class="container pt-3" id="app" v-cloak>
     <h1>REST API</h1>
 
     <form class="form-inline mb-3" @submit.prevent="createContact">
@@ -22,15 +30,17 @@
         <button class="btn btn-primary" type="submit">Создать</button>
     </form>
 
-
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Name</h5>
-        <p class="card-text">Value</p>
-        <button class="btn btn-primary">Отметить</button>
-        <button class="btn btn-danger">Удалить</button>
+    <div v-if="contacts.length ">
+        <div class="card mb-3" v-for="contact in contacts">
+            <div class="card-body">
+                <h5 class="card-title" :style="{color: contact.marked ? 'red' : 'black'}">{{ contact.name}}</h5>
+                <p class="card-text">{{contact.value}}</p>
+                <button class="btn btn-primary" @click="markContact(contact.id)" :disabled="contact.marked">Отметить</button>
+                <button class="btn btn-danger" @click="removeContact(contact.id)">Удалить</button>
+            </div>
+        </div>
     </div>
-</div>
+    <p v-else="">Контактов пока нету</p>
 </div>
 
 <script type="module" src="frontend.js"></script>
