@@ -20,9 +20,9 @@ new Vue ({
     },
     computed : {
         canCreate() {
-
+            return
         }
-    }
+    },
     methods : {
         createContact() {
             const {...contact} = this.form;
