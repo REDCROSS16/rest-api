@@ -20,7 +20,7 @@ new Vue ({
     },
     computed : {
         canCreate() {
-            return
+            return 123
         }
     },
     methods : {
