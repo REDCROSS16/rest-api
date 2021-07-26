@@ -38,7 +38,7 @@ app.put('/api/contacts/:id', (req,res) => {
 
 app.use(express.static(path.resolve(__dirname, 'client')));
 app.get('*', (req, res) => {
-    res.sendFile(__dirname, 'client', 'index.html');
+    res.sendFile(__dirname, 'client', 'index.php');
 })
 
 app.listen('3000', ()=> {
